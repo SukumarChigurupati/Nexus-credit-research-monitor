@@ -70,6 +70,29 @@ Reconciliation queries (sql/07–10) to validate every number
 
 Details: [`docs/nexus-dashboard-validation.md`](docs/nexus-dashboard-validation.md)
 
+## Data Health page
+
+![Data Health page](images/data-health.png)
+
+A second dashboard page monitors the **quality and freshness of the source data** itself.
+
+**Completeness (dataset 05)**
+
+| Check | Result | What it means |
+|---|---|---|
+| Maturity date populated (instruments) | 99% | Maturity wall is reliable |
+| Identifier populated (FIGI/CUSIP/ISIN) | 100% | Instruments are uniquely identifiable |
+| Amount outstanding / currency | 0% / 0% | Dollar totals are not reliable, so the dashboard uses counts |
+| Seniority populated | 0% | Secured vs. unsecured ranking not yet possible |
+| Issuer sector populated | 0% | Sector analysis blocked until enrichment |
+| Issuers with ≥1 debt instrument | 21% | Bond-level coverage is concentrated |
+| Issuers in a research universe | 58% | Reconciles with the 1,915 uncovered issuers (42%) |
+| Alert issuer attribution confirmed | 67% | One third of alerts still need subject confirmation |
+
+**Freshness (dataset 06)** computes live / cached / stale per provider using the same TTL rules as the source application.
+
+**Pipeline finding:** `nexus.filing_monitor_run` contains only 3 runs, all from Aug 6, 2026 (2 baseline, 1 backfill, 23 issuers), and **no scheduled delta runs**. New filings since then arrive only through enrichment and are flagged as historical backfill, which explains why "new material alerts (7 days)" is always 0. Reported to the platform owner.
+
 ## Repository contents
 
 ```
@@ -99,7 +122,7 @@ Tableau Desktop · PostgreSQL (Supabase) · SQL (CTEs, pre-aggregation, `FILTER`
 - [x] MVP: KPIs, maturity wall, priority table
 - [x] V2: event feed, issuer drilldown, SEC source links, research-universe filter, extract
 - [x] V2.1: severity color-coding, alerts-by-type chart, click-to-filter by alert type
-- [ ] Data Quality and Freshness page (datasets 05–06)
+- [x] Data Quality and Freshness page (datasets 05–06)
 - [ ] Scheduled extract refresh
 
 ---
