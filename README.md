@@ -97,7 +97,7 @@ Tableau Desktop · PostgreSQL (Supabase) · SQL (CTEs, pre-aggregation, `FILTER`
 
 - [x] MVP: KPIs, maturity wall, priority table
 - [x] V2: event feed, issuer drilldown, SEC source links, research-universe filter, extract
-- [ ] Severity color-coding and alerts-by-type chart
+- [x] V2.1: severity color-coding, alerts-by-type chart, click-to-filter by alert type
 - [ ] Data Quality and Freshness page (datasets 05–06)
 - [ ] Scheduled extract refresh
 
