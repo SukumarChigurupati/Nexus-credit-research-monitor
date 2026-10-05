@@ -16,6 +16,7 @@ A credit **portfolio-surveillance dashboard** built in Tableau on top of a live 
 | **Maturity Wall** | When debt comes due, by quarter (peak in 2028–2031) |
 | **Priority Table** | Which issuers need attention first, with *transparent reasons* rather than an invented risk score |
 | **Event Feed** | Recent credit events (going-concern doubt, covenant breach, delisting notice, Chapter 11, …) with severity and source filing |
+| **Alerts by Type** | Which kinds of credit events are most common (covenant breach, substantial doubt, delisting notice, …), colored by severity; click a bar to filter the Event Feed |
 | **Research Universe filter** | View one research group at a time (Distressed Core, High Yield, Fallen Angels, Refinancing Risk, …) |
 
 **Interactions**
