@@ -91,7 +91,7 @@ A second dashboard page monitors the **quality and freshness of the source data*
 
 **Freshness (dataset 06)** computes live / cached / stale per provider using the same TTL rules as the source application.
 
-**Pipeline finding:** `nexus.filing_monitor_run` contains only 3 runs, all from Aug 6, 2026 (2 baseline, 1 backfill, 23 issuers), and **no scheduled delta runs**. New filings since then arrive only through enrichment and are flagged as historical backfill, which explains why "new material alerts (7 days)" is always 0. Reported to the platform owner.
+**Pipeline finding:** "New material alerts (7 days)" was always 0. I first checked `filing_monitor_run`, which suggested the nightly job had stopped, but that turned out to be a legacy table. The real nightly job (`market_discovery_run`) runs successfully every night at ~10 PM ET. Across the last 15 runs it examined 130–320 filings and found 58–107 candidate filings per night, yet created **0 evidence and 0 alerts** (0 errors). New alerts arrive only through the separate enrichment step, which flags them as historical backfill, so the dashboard correctly shows 0 new alerts. Reported to the platform owner for review.
 
 ## Repository contents
 
